@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">BNetTestCase</string>
+    <string name="list">List</string>
+</resources>
