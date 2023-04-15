@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="297dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="5dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/item_image"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8" />
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="Вредители зерновых культур" />
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="#AEB0B6"
+            android:textSize="12sp"
+            tools:text="Состав вредителей зерновых культур обширен и разнообразен. Более 130 видов ..." />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>
