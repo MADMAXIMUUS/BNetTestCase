@@ -3,21 +3,24 @@ package ru.madmax.bnettestcase.data.dataSource
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.madmax.bnettestcase.domain.model.Response
-import ru.madmax.bnettestcase.domain.model.ResponseItem
+import retrofit2.Response
+import ru.madmax.bnettestcase.domain.model.Drag
 
 interface DragApi {
 
-    @GET("trending")
+    @GET("index")
     suspend fun search(
-        @Query("api_key") apiKey: String,
-        @Query("limit") limit: Int,
-        @Query("rating") rating: String
-    ): Response
+        @Query("id") id: Int = 0,
+        @Query("search") search: String? = null,
+        @Query("crop_id") cropId: Int = 0,
+        @Query("harmful_object_id") objectId: Int = 0,
+        @Query("ingredient_id") ingredientId: Int = 0,
+        @Query("offset") offset: Int = 0,
+        @Query("limit") limit: Int = 10
+    ): Response<List<Drag>>
 
-    @GET("{id}")
+    @GET("item")
     suspend fun getById(
-        @Path("id") id: String,
-        @Query("api_key") apiKey: String
-    ): ResponseItem
+        @Path("id") id: Int,
+    ): Response<Drag>
 }
