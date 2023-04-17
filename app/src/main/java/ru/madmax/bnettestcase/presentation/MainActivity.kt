@@ -76,12 +76,14 @@ class MainActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     binding.listRv.scrollToPosition(0)
-                    viewModel.updateSearchQuery(it)
                 }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    viewModel.updateSearchQuery(it)
+                }
                 return true
             }
 
