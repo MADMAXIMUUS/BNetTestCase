@@ -8,7 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.madmax.bnettestcase.data.dataSource.DragApi
+import ru.madmax.bnettestcase.data.dataSource.DragService
 import ru.madmax.bnettestcase.data.repository.DragRepository
 import ru.madmax.bnettestcase.domain.repository.DragRepositoryImpl
 import ru.madmax.bnettestcase.domain.useCase.DragUseCases
@@ -36,19 +36,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideDragApi(client: OkHttpClient): DragApi {
+    fun provideDragApi(client: OkHttpClient): DragService {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
+            .baseUrl("$BASE_URL/")
             .client(client)
             .build()
-            .create(DragApi::class.java)
+            .create(DragService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideDragRepository(dragApi: DragApi): DragRepository {
-        return DragRepositoryImpl(dragApi)
+    fun provideDragRepository(dragService: DragService): DragRepository {
+        return DragRepositoryImpl(dragService)
     }
 
     @Provides

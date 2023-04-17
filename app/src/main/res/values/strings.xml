@@ -2,4 +2,7 @@
     <string name="app_name" translatable="false">BNetTestCase</string>
     <string name="list">List</string>
     <string name="search">Search</string>
+
+    <string name="load_error">Oops, can\'t load data</string>
+    <string name="try_again">Try Again</string>
 </resources>

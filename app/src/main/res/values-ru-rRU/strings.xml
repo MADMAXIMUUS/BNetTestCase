@@ -2,4 +2,7 @@
 <resources>
     <string name="list">Список</string>
     <string name="search">Search</string>
+
+    <string name="load_error">Ой, не могу загрузить данные</string>
+    <string name="try_again">Повторить</string>
 </resources>

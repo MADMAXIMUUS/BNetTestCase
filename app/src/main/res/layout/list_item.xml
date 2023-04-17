@@ -18,7 +18,6 @@
             android:id="@+id/item_image"
             android:layout_width="match_parent"
             android:layout_height="78dp"
-            android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize8" />
 
         <TextView
@@ -37,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:textColor="#AEB0B6"
+            android:ellipsize="end"
             android:textSize="12sp"
             tools:text="Состав вредителей зерновых культур обширен и разнообразен. Более 130 видов ..." />
 

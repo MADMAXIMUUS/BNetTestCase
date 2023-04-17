@@ -1,20 +1,26 @@
-package ru.madmax.bnettestcase.presentation.list
+package ru.madmax.bnettestcase.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.madmax.bnettestcase.databinding.ListItemBinding
 import ru.madmax.bnettestcase.domain.model.Drag
+import ru.madmax.bnettestcase.util.Constants.BASE_IMAGE_URL
 
-class DragAdapter : PagingDataAdapter<Drag, DragAdapter.DragViewHolder>(REPO_COMPARATOR) {
+class DragAdapter : PagingDataAdapter<Drag, DragAdapter.DragViewHolder>(DragsDiffCallback()) {
 
     inner class DragViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Drag) {
             binding.apply {
+                Glide
+                    .with(itemImage.context)
+                    .load(BASE_IMAGE_URL + item.image)
+                    .into(itemImage)
                 itemTitle.text = item.name
                 itemDescription.text = item.description
             }
@@ -32,17 +38,11 @@ class DragAdapter : PagingDataAdapter<Drag, DragAdapter.DragViewHolder>(REPO_COM
         return DragViewHolder(binding)
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(item: Drag)
-    }
+    class DragsDiffCallback : DiffUtil.ItemCallback<Drag>() {
+        override fun areItemsTheSame(oldItem: Drag, newItem: Drag): Boolean =
+            oldItem.id == newItem.id
 
-    companion object {
-        private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<Drag>() {
-            override fun areItemsTheSame(oldItem: Drag, newItem: Drag): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: Drag, newItem: Drag): Boolean =
-                oldItem == newItem
-        }
+        override fun areContentsTheSame(oldItem: Drag, newItem: Drag): Boolean =
+            oldItem == newItem
     }
 }
